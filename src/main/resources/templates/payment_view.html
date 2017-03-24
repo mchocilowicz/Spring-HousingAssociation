@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+</head>
+<body>
+<div class="container">
+    <div class="vertical-center-row">
+        <div align="center">
+
+            <h1>Obliczone wedlug stawki</h1>
+            <table>
+                <tr>
+                    <td> Elektrycznosc </td>
+                    <td><p th:text="${cost.electricity}"></p></td>
+                </tr>
+                <tr>
+                    <td>Gaz</td>
+                    <td><p th:text="${cost.gas}"></p></td>
+                </tr>
+                <tr>
+                    <td>Centralne Ogrzewanie</td>
+                    <td> <p th:text="${cost.centralHeating}"></p></td>
+                </tr>
+                <tr>
+                    <td> Gorąca Woda</td>
+                    <td><p th:text="${cost.hotWater}"></p></td>
+                </tr>
+                <tr>
+                    <td>Zimna Woda</td>
+                    <td> <p th:text="${cost.coldWater}"></p></td>
+                </tr>
+                <tr>
+                    <td>  Fundusz Remontowy</td>
+                    <td><p th:text="${cost.repairFund}"></p></td>
+                </tr>
+                <tr>
+                    <td> Eksploatacja Mieszkania</td>
+                    <td><p th:text="${cost.operation}"></p></td>
+                </tr>
+                <tr>
+                    <td> Dodatkowa Przestrzen</td>
+                    <td> <p th:text="${cost.extraSpace}"></p></td>
+                </tr>
+                <tr>
+                    <td>Oplata za Liczniki </td>
+                    <td> <p th:text="${cost.counter}"></p></td>
+                </tr>
+                <tr>
+                    <td>Oplaty komunalne</td>
+                    <td><p th:text="${cost.urbanWaste}"></p></td>
+                </tr>
+                <tr>
+                    <td> Oplata abonamentowa</td>
+                    <td> <p th:text="${cost.fee}"></p></td>
+                </tr>
+                <tr>
+                    <td> Odczyt licznikow</td>
+                    <td><p th:text="${cost.readingCounter}"></p></td>
+                </tr>
+                <tr>
+                    <td>Garaz</td>
+                    <td><p th:text="${cost.garage}"></p></td>
+                </tr>
+                <tr>
+                    <td>Miejsce parkingowe</td>
+                    <td> <p th:text="${cost.parkingSlot}"></p></td>
+                </tr>
+            </table>
+            <br>
+            <h1>Przyjete wartosci</h1>
+            <table>
+                <tr>
+                    <td>Goraca Woda</td>
+                    <td><p th:text="${flat.getCounterValue('CW')}"></p></td>
+                </tr>
+                <tr>
+                    <td>Zimna Woda</td>
+                    <td> <p th:text="${flat.getCounterValue('ZW')}"></p></td>
+                </tr>
+                <tr>
+                    <td>Ilosc Licznikow</td>
+                    <td><p th:text="${flat.getCountersLeng()}"></p></td>
+                </tr>
+                <tr>
+                    <td> Ilosc osob</td>
+                    <td><p th:text="${user.inhabitants}"></p></td>
+                </tr>
+                <tr>
+                    <td>Powierzchnia lokalu</td>
+                    <td> <p th:href="${flat.area}"></p></td>
+                </tr>
+                <tr>
+                    <td>Powierzchnia lokalu</td>
+                    <td> <p th:href="${flat.area}"></p></td>
+                </tr>
+                <tr>
+                    <td>Prąd</td>
+                    <td><p th:href="${flat.getCounterValue('Prad')}"></p></td>
+                </tr>
+                <tr>
+                    <td>Gaz</td>
+                    <td><p th:href="${flat.getCounterValue('Gaz')}"></p></td>
+                </tr>
+                <tr>
+                    <td>Ilosc Aut</td>
+                    <td><p th:href="${user.autos}"></p></td>
+                </tr>
+            </table>
+
+            <h1>Koszt</h1>
+            <p th:text="${payment.price}"></p>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

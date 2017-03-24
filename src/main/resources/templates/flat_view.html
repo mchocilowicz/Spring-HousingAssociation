@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>User details</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</nav>
+
+
+    <div class="container">
+        <div class="vertical-center-row">
+            <div align="center">
+                <table class="table">
+                    <tr>
+                        <td><p>Mieszkanie:</p></td>
+                        <td><p th:text="${flat.getFlat()}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Powierzchnia:</p></td>
+                        <td><p th:text="${flat.area}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Ilość pokoi:</p></td>
+                        <td><p th:text="${flat.room}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><p>W użytku:</p></td>
+                        <td><p th:text="${flat.used} ? 'Tak': 'Nie'"></p></td>
+                    </tr>
+                </table>
+
+
+<br /><br />
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+
+            <th>Pokój</th>
+            <th>Licznik</th>
+            <th>Wartość</th>
+            <th sec:authorize="hasAuthority('ADMIN')">Akcja</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="c : ${counter}">
+            <td th:text="${c.room}"></td>
+            <td th:text="${c.name}"></td>
+            <td th:text="${c.value}"></td>
+
+            <td sec:authorize="hasAuthority('ADMIN')">
+                <a th:href="@{/counter/create/(id=${c.id})}">Zmień</a>
+                <a th:href="@{'/counter/delete/' + ${c.id}}">Usuń</a>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+            <script src="/js/jquery-1.11.3.min.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

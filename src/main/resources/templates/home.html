@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>Home page</title>
+
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400" />
+<!-- Google web font "Open Sans" -->
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<!-- Bootstrap style -->
+<link rel="stylesheet" href="css/flexslider.css" />
+<!-- Flexslider style -->
+<link rel="stylesheet" href="css/templatemo-style.css" />
+
+</head>
+
+<body class="page" background="/images/story-bg-1.jpg">
+
+
+	<!-- background images -->
+	<div class="page-bg-imgs-list">
+		<img src="images/story-bg-1.jpg" id="page-1-img" class="main-img"
+			alt="O nas" /> <img src="images/story-bg-2.jpg" id="page-2-img"
+			alt="Mieszkania" /> <img src="images/story-bg-3.jpg" id="page-3-img"
+			alt="Rejestracja" /> <img src="images/story-bg-4.jpg"
+			id="page-4-img" alt="Kontakt" /> <img src="images/story-bg-3.jpg"
+			id="page-5-img" alt="Logowanie" />
+	</div>
+
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+
+				<div class="header">
+
+					<!-- site title -->
+					<header class="box box-white">
+						<a href="javascript:void(0)" class="js-site-title">
+							<h1 class="box-text site-title-text">Spółdzielnia Sokołówka</h1>
+						</a>
+					</header>
+
+					<!-- site navigation -->
+					<nav class="js-nav">
+						<ul class="nav-items-container">
+
+							<li data-nav-item-id="page-1"
+								class="block-keep-ratio block-keep-ratio-1-1 block-width-half box box-white box-nav-item js-nav-item pull-xs-left">
+								<a href="#page-1"
+								class="block-keep-ratio-content box-nav-item-link"> <span
+									class="box-text box-text-nav-item flexbox-center">O nas</span>
+							</a>
+							</li>
+
+							<li data-nav-item-id="page-2"
+								class="block-keep-ratio block-keep-ratio-1-1 block-width-half box box-white box-nav-item js-nav-item pull-xs-right">
+								<a href="#page-2"
+								class="block-keep-ratio-content box-nav-item-link"> <span
+									class="box-text box-text-nav-item flexbox-center">Mieszkania</span>
+							</a>
+							</li>
+
+							<li data-nav-item-id="page-5"
+								class="block-keep-ratio block-keep-ratio-1-1 block-width-half box box-white box-nav-item js-nav-item pull-xs-left">
+								<a sec:authorize="isAnonymous()" href="/login"
+								class="block-keep-ratio-content box-nav-item-link"> <span
+									class="box-text box-text-nav-item flexbox-center">Logowanie</span>
+							</a> <a sec:authorize="hasAuthority('USER')" href="#page-5"
+								class="block-keep-ratio-content box-nav-item-link"> <span
+									class="box-text box-text-nav-item flexbox-center">
+										Konto użytkownika</span>
+							</a> <a sec:authorize="hasAuthority('ADMIN')" href="/admin"
+								class="block-keep-ratio-content box-nav-item-link"> <span
+									class="box-text box-text-nav-item flexbox-center">ADMIN</span>
+							</a>
+							</li>
+							<li data-nav-item-id="page-4"
+								class="block-keep-ratio block-keep-ratio-1-1 block-width-half box box-white box-nav-item js-nav-item pull-xs-right">
+								<a href="#page-4"
+								class="block-keep-ratio-content box-nav-item-link"> <span
+									class="box-text box-text-nav-item flexbox-center">Kontakt</span>
+							</a>
+							</li>
+
+
+						</ul>
+					</nav>
+				</div>
+				<!-- .header -->
+
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+				<div class="content-wrapper js-content-wrapper">
+					<!-- about -->
+					<section data-page-id="page-1" class="content js-content">
+
+						<header class="box box-black margin-b-20">
+							<h2 class="box-text page-title-text">O Spółdzielni</h2>
+						</header>
+
+				 <div class="content-text">
+                                    <p style="text-align: justify">Osiedle Sokołówka to połączenie nowoczesnej architektury z klasyczną estetyką. Prosty układ budynków wpisuje się w naturalne ukształtowanie terenu, a bliskość terenów zielonych, podkreśla wyjątkowy charakter tej inwestycji.
+
+                                    </p>
+                                    <p style="text-align: justify">W pierwszym etapie powstały cztery budynki, a w ramach obecnie realizowanego drugiego etapu, powstaną kolejne dwa siedmiopiętrowe budynki.  Autorem koncepcji architektonicznej jest KANON ARCHITEKCI JANDER ZUTEREK S.C.
+                                    </p>
+                                </div>
+
+					</section>
+					<!-- #about -->
+
+					<!-- gallery -->
+					<section data-page-id="page-2"
+						class="content content-gallery js-content">
+
+						<header class="box box-black margin-b-20">
+							<h2 class="box-text page-title-text">Mieszkania</h2>
+						</header>
+
+						<div class="content-text content-text-gallery">
+
+							<div id="slider" class="flexslider">
+								<ul class="slides">
+									<li><img src="images/slider/slide1.jpg" alt="Slide 1" /></li>
+								</ul>
+							</div>
+							<!-- #slider -->
+
+
+						</div>
+
+					</section>
+					<!-- #gallery -->
+
+
+					<section data-page-id="page-5" class="content js-content">
+
+
+						<div class="outer">
+							<div class="inner">
+								<a class="text" href="/profile/payment">Płatności</a>
+							</div>
+						</div>
+						<div class="outer">
+							<div class="inner">
+								<a class="text" href="/profile/flat">Pokaż mieszkanie</a>
+							</div>
+						</div>
+						<div class="outer">
+							<div class="inner">
+								<a class="text" href="/profile/user">Pokaż profil</a>
+							</div>
+						</div>
+						<div class="outer">
+							<div class="inner">
+								<a class="text" href="/costs/view">Pokaż aktualny cennik</a>
+							</div>
+						</div>
+
+					</section>
+					<!-- #services -->
+
+					<!-- contact -->
+			<section data-page-id="page-4" class="content js-content">
+
+                                <header class="box box-black margin-b-20">
+                                    <h2 class="box-text page-title-text">Kontakt</h2>
+                                </header>
+
+                                <div class="content-text">
+                                   <p align="center" style="font-size:20px">ul.Świętej Teresy 23<br />91-357 Łódź<br /> tel.: (42) 658-53-98<br /> fax: (42) 658-53-99<br /></p>
+                                   	<p align="center" style="font-size:20px"><b>Godziny pracy Spółdzielni<br />Obsługa interesantów</b><br /><br />poniedziałek&nbsp;8:00 - 15:00<br />wtorek&nbsp;&nbsp;&nbsp;11:00 - 17:00<br />środa&nbsp;&nbsp;&nbsp;bez interesantów<br />czwartek&nbsp;&nbsp;8:00 - 15:00<br />piątek&nbsp;&nbsp;&nbsp;8:00 - 15:00<br /></p> 
+						</div>
+					</section>
+					<!-- #contact -->
+				</div>
+			</div>
+
+		</div>
+
+		<!-- footer row -->
+		<footer class="row footer js-footer">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+				<p class="copyright-text">
+					Copyright &copy; 2016 Sokołówka | Design: MKMC <a
+						href="http://www.templatemo.com/tm-480-story" target="_parent"
+						title="Story Bootstrap Theme">The Story</a>
+				</p>
+
+			</div>
+		</footer>
+
+	</div>
+	<!-- .container-fluid -->
+
+	<div id="preloader">
+		<div id="status">&nbsp;</div>
+	</div>
+	<!-- /#preloader -->
+
+	<!-- load JS files -->
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<!-- jQuery -->
+	<script src="/js/jquery.flexslider-min.js"></script>
+	<!-- Flex Slider -->
+	<script src="/js/jquery.backstretch.min.js"></script>
+	<!-- Backstretch http://srobbin.com/jquery-plugins/backstretch/ -->
+	<script src="/js/templatemo-script.js"></script>
+	<!-- Templatemo scripts -->
+
+</body>
+</html>

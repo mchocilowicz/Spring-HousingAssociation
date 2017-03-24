@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>User details</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li  sec:authorize="hasAuthority('USER')"><a href="/">Home</a></li>
+        <li  sec:authorize="hasAuthority('ADMIN')"><a href="/admin">Admin</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <div class="vertical-center-row">
+        <div align="center">
+
+                <h1> Profil</h1>
+            <table class="table">
+                <tr>
+                    <td>Email:</td>
+                    <td><p th:text="${user.email}"></p></td>
+                </tr>
+                <tr>
+                    <td>Imię:</td>
+                    <td><p th:text="${user.firstName}"></p></td>
+                </tr>
+                <tr>
+                    <td>Nazwisko:</td>
+                    <td><p th:text="${user.lastName}"></p></td>
+                </tr>
+                <tr>
+                    <td>Rola:</td>
+                    <td><p th:text="${user.role}"></p></td>
+                </tr>
+                <tr>
+                    <td>Telefon:</td>
+                    <td> <p th:text="${user.phone}"></p></td>
+                </tr>
+                <tr>
+                    <td>Ilość mieszkanców:</td>
+                    <td><p th:text="${user.inhabitants}"></p></td>
+                </tr>
+                <tr>
+                    <td>Ilość aut:</td>
+                    <td><p th:text="${user.autos}"></p></td>
+                </tr>
+            </table>
+
+
+
+                <div sec:authorize="hasAuthority('USER')">
+
+
+                    <b>Zmiana hasła :</b>
+
+                    <form method="post" action="/profile/updatePassword">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <table class="table">
+                            <tr>
+                                <td><label>Podaj nowe hasło</label></td>
+                                <td><input type="password" name="password" /></td>
+
+                            </tr>
+
+                            <tr>
+                                <td> <input class="btn btn-success" type="submit" value="Wyślij" /></td>
+
+                            </tr>
+                        </table>
+
+
+
+
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

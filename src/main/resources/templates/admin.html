@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/admin.css"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/admin">Admin</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="/building/create">Dodaj Budynek</a></li>
+                <li><a href="/flat/create">Dodaj Mieszkanie</a></li>
+                <li><a href="/counter/create">Dodaj Liczniki</a></li>
+                <li><a href="/user/create">Dodaj Mieszkańca</a></li>
+                <li><a href="/costs/create">Dodaj obowiązujace koszta</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Użytkownicy</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Telefon</th>
+                    <th>E-mail</th>
+                    <th>Blok : Mieszkanie</th>
+                    <th> Akcja</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.firstName}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td th:text="${user.phone}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.getFlatInfo()}"></td>
+                    <td>
+
+                        <a class="btn btn-primary" th:href="@{'/user/delete/' + ${user.id}}">Usuń</a>
+                        <a class="btn btn-primary" th:href="@{'/user/' + ${user.id}} ">Pokaż Profil</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Mieszkania</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Blok</th>
+                    <th>Nr</th>
+                    <th>Powierzchnia</th>
+                    <th>Pokoje</th>
+                    <th>Wynajęty</th>
+                    <th>Akcja</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="flat : ${flats}">
+                        <td th:text="${flat.building.name}"></td>
+                        <td th:text="${flat.number}"></td>
+                        <td th:text="${flat.area}"></td>
+                        <td th:text="${flat.room}"></td>
+                        <td th:text="${flat.used} ? 'Zajety': 'Wolny'"></td>
+                        <td>
+                            <a class="btn btn-primary" th:href="@{/flat/create(id=${flat.id})}">Zmień</a>
+                            <a class="btn btn-primary" th:href="@{'/flat/view/' + ${flat.id}}">Podgląd</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Bloki</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Ilość pięter</th>
+                    <th>Akcja</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="building : ${buildings}">
+                    <td th:text="${building.name}"></td>
+                    <td th:text="${building.floor}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'/building/delete/' + ${building.id}}">Usuń</a>
+                        <a class="btn btn-primary" th:href="@{/building/create(id=${building.id})}">Zmień</a>
+                    </td>
+                 </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Historia Cen</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Ważne od</th>
+                    <th>Elektryczność</th>
+                    <th>Gaz</th>
+                    <th>Ogrzewanie</th>
+                    <th>Gorąca Woda</th>
+                    <th>Zimna Woda</th>
+                    <th>Akcja</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="cost : ${costs}">
+                    <td th:text="${cost.avilable}"></td>
+                    <td th:text="${cost.electricity}"></td>
+                    <td th:text="${cost.gas}"></td>
+                    <td th:text="${cost.centralHeating}"></td>
+                    <td th:text="${cost.hotWater}"></td>
+                    <td th:text="${cost.coldWater}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/costs/create/(id=${cost.id})}">Zmień</a>
+                        <a class="btn btn-primary" th:href="@{'/costs/delete/' + ${cost.id}}">Usuń</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Płatności</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Rok</th>
+                    <th>Miesiąc</th>
+                    <th>Data Opłacenia</th>
+                    <th>Cena</th>
+                    <th>Użytkownik</th>
+                    <th>Status</th>
+                    <th>Akcja</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="payment : ${payments}">
+                    <td th:text="${payment.year}"></td>
+                    <td th:text="${payment.month}"></td>
+                    <td th:text="${payment.paidDate}"></td>
+                    <td th:text="${payment.price}"></td>
+                    <td th:text="${payment.getUserName()}"></td>
+                    <td th:text="${payment.paid} ? 'Oplacony': 'Do zaplacenia'"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{'/payment/view/'+ ${payment.id}}">Podgląd</a>
+
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Liczniki</h1>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Mieszkanie</th>
+                    <th>Pokój</th>
+                    <th>Licznik</th>
+                    <th>Wartość</th>
+                    <th>Akcja</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="counter : ${counters}">
+                    <td th:text="${counter.getFlatInfo()}"></td>
+                    <td th:text="${counter.room}"></td>
+                    <td th:text="${counter.name}"></td>
+                    <td th:text="${counter.value}"></td>
+
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/counter/create/(id=${counter.id})}">Zmień</a>
+                        <a class="btn btn-primary" th:href="@{'/counter/delete/' + ${counter.id}}">Usuń</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+    </div>
+</div>
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Log in</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+
+
+
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</nav>
+
+
+<div class="container">
+    <div class="vertical-center-row">
+        <div align="center" style="margin-top:60px;">
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Rok</th>
+                    <th>Miesiąc</th>
+                    <th>Data opłacenia</th>
+                    <th>Cena</th>
+                    <th>Status</th>
+                    <th>Akcja</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="payment : ${pay}">
+                    <td th:text="${payment.year}"></td>
+                    <td th:text="${payment.month}"></td>
+                    <td th:text="${payment.paidDate}"></td>
+                    <td th:text="${payment.price}"></td>
+                    <td th:text="${payment.paid} ? 'Oplacony': 'Do zaplacenia'"></td>
+                    <td>
+                        <a th:href="@{'/user/pay/' + ${payment.id}}">Zapłać</a>
+                        <a th:href="@{'/payment/view/' + ${payment.id}}">Pokaż</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

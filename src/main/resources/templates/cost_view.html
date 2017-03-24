@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <div class="vertical-center-row">
+        <div align="center">
+
+
+            <h3><br />Aktualna stawka : <p th:text="${cost.avilable}"></p><br /></h3>
+            <table class="table">
+                <tr>
+                    <td> Elektryczność: </td>
+                    <td><p th:text="${cost.electricity}"></p></td>
+                </tr>
+                <tr>
+                    <td>Gaz:</td>
+                    <td><p th:text="${cost.gas}"></p></td>
+                </tr>
+                <tr>
+                    <td>Centralne ogrzewanie:</td>
+                    <td> <p th:text="${cost.centralHeating}"></p></td>
+                </tr>
+                <tr>
+                    <td> Ciepła woda:</td>
+                    <td><p th:text="${cost.hotWater}"></p></td>
+                </tr>
+                <tr>
+                    <td>Zimna woda:</td>
+                    <td> <p th:text="${cost.coldWater}"></p></td>
+                </tr>
+                <tr>
+                    <td>  Fundusz remontowy:</td>
+                    <td><p th:text="${cost.repairFund}"></p></td>
+                </tr>
+                <tr>
+                    <td> Eksploatacja mieszkania:</td>
+                    <td><p th:text="${cost.operation}"></p></td>
+                </tr>
+                <tr>
+                    <td> Dodatkowa przestrzeń:</td>
+                    <td> <p th:text="${cost.extraSpace}"></p></td>
+                </tr>
+                <tr>
+                    <td>Opłata za liczniki: </td>
+                    <td> <p th:text="${cost.counter}"></p></td>
+                </tr>
+                <tr>
+                    <td>Opłaty komunalne:</td>
+                    <td><p th:text="${cost.urbanWaste}"></p></td>
+                </tr>
+                <tr>
+                    <td> Opłata abonamentowa:</td>
+                    <td> <p th:text="${cost.fee}"></p></td>
+                </tr>
+                <tr>
+                    <td> Odczyt liczników:</td>
+                    <td><p th:text="${cost.readingCounter}"></p></td>
+                </tr>
+                <tr>
+                    <td>Garaż:</td>
+                    <td><p th:text="${cost.garage}"></p></td>
+                </tr>
+                <tr>
+                    <td>Miejsce parkingowe:</td>
+                    <td> <p th:text="${cost.parkingSlot}"></p></td>
+                </tr>
+            </table>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

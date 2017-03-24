@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>Log in</title>
+
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/main.css" />
+
+
+
+</head>
+<body background="/images/story-bg-1.jpg">
+
+  <div class="wrapper">
+    	<form class="form-signin" role="form" action="/login" method="post">
+						<input type="hidden" th:name="${_csrf.parameterName}"
+							th:value="${_csrf.token}" />       
+      <h2 class="form-signin-heading">Zaloguj</h2>
+      <div class="alert alert-danger" th:if="${error}">
+						<td><p>Adres E-mail albo hasło są niepoprawne.</p></td>
+					</div>
+     <input type="email" name="email" id="email" class="form-control" th:required="required" placeholder="Email" />
+     <input type="password" name="password" class="form-control" id="password" th:required="required" placeholder="Hasło"/>     
+      <label class="checkbox">
+       <input type="checkbox" name="remember-me" class="form-control" id="remember-me"/> Zapamietaj mnie!
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
+            <a class="btn btn-primary" href="/resetPassword">Reset Hasła</a>
+    </form>
+
+  </div>
+
+
+
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

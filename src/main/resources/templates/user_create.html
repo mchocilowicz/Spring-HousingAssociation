@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/admin.css"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/admin">Admin</a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="/building/create">Dodaj Budynek</a></li>
+                <li><a href="/flat/create">Dodaj Mieszkanie</a></li>
+                <li><a href="/counter/create">Dodaj Liczniki</a></li>
+                <li><a href="/user/create">Dodaj Mieszkanca</a></li>
+                <li><a href="/costs/create">Dodaj obowiązujace koszta</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-3 main">
+            <h3><b>Tworzenie użytkownika</b></h3>
+
+
+            <form  th:action="@{/user/create}" th:object="${form}" method="post">
+
+                <div th:if="${#fields.hasGlobalErrors()}"
+                     class="has-error col-lg-offset-3 alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <label class="control-label" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</label>
+                </div>
+
+
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+               <div class="row">
+					<div class="form-group">
+                    <label class="col-md-2 col-sm-2 col-xs-12 control-label">Email</label>
+                    <div class="col-md-2 col-sm-6 col-xs-7">
+                    <input type="text" th:field="*{email}" th:required="required"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="row">
+					<div class="form-group">
+                    <label class="col-md-2 col-sm-2 col-xs-12 control-label">Hasło</label>
+                    <div class="col-md-2 col-sm-6 col-xs-7">
+                    <input type="password" th:field="*{password}" />
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="row">
+					<div class="form-group">
+                    <label class="col-md-2 col-sm-2 col-xs-12 control-label">Powtórz hasło</label>
+                    <div class="col-md-2 col-sm-6 col-xs-7">
+                    <input type="password" th:field="*{passwordRepeated}" th:required="required"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('passwordRepeated')}" th:errors="*{passwordRepeated}">Name Error</p>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="row">
+					<div class="form-group">
+                    <label class="col-md-2 col-sm-2 col-xs-12 control-label">Imię</label>
+                    <div class="col-md-2 col-sm-6 col-xs-7">
+                    <input type="text" th:field="*{firstName}" />
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</p>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="row">
+					<div class="form-group">
+                    <label class="col-md-2 col-sm-2 col-xs-12 control-label">Nazwisko</label>
+                    <div class="col-md-2 col-sm-6 col-xs-7">
+                    <input type="text" th:field="*{lastName}" />
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</p>
+                    </div>
+                </div>
+                </div>
+                
+             <div class="row">
+					<div class="form-group">
+                    <label class="col-md-2 col-sm-2 col-xs-12 control-label">Telefon</label>
+                    <div class="col-md-2 col-sm-6 col-xs-7">
+                    <input type="tel" th:field="*{phone}" />
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name Error</p>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="row">
+					<div class="form-group">
+                    <label class="col-md-2 col-sm-2 col-xs-12 control-label">Liczba mieszkańców</label>
+                    <div class="col-md-2 col-sm-6 col-xs-7">
+                    <input type="number" th:field="*{inhabitants}" min="1" />
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('inhabitants')}" th:errors="*{inhabitants}">Name Error</p>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="row">
+					<div class="form-group">
+                    <label class="col-md-2 col-sm-2 col-xs-12 control-label">Liczba samochodów</label>
+                    <div class="col-md-2 col-sm-6 col-xs-7">
+                    <input type="number" th:field="*{autos}" min="0"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('autos')}" th:errors="*{autos}">Name Error</p>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="row">
+					<div class="form-group">
+                    <label class="col-md-2 col-sm-2 col-xs-12 control-label" for="role">Rola</label>
+                    <div class="col-md-2 col-sm-6 col-xs-7">
+                    <select name="role" id="role" th:required="required">
+                        <option  th:value="USER" th:text="USER"></option>
+                        <option  th:value="ADMIN" th:text="ADMIN"></option>
+                    </select>
+                    </div>
+                </div>
+                </div>
+                
+				<div class="row">
+					<div class="form-group">
+					<label class="col-md-2 col-sm-2 col-xs-12 control-label" for="role">Mieszkanie</label>
+					<div class="col-md-2 col-sm-6 col-xs-7">
+                    <select name="flat" id="flat">
+                        <option  th:each="flat : ${flats}" th:value="${flat.id}" th:if="${flat.used == false}" th:text="${flat.getFlat()}"></option>
+                    </select>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="row">
+					<div class="form-group">
+					<div class="col-md-2 col-md-offset-2 col-sm-6 col-xs-7">
+                <button type="submit" class="btn btn-success">Zapisz</button>
+                </div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+</body>
+</html>

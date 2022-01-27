@@ -32,8 +32,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.*;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.error;
-
 @Controller
 public class UserController {
 

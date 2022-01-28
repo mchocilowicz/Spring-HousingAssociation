@@ -15,5 +15,5 @@ services:
     ports:
       - 8091:80
     environment:
-      PGADMIN_DEFAULT_EMAIL: tom@tomkemper.nl
+      PGADMIN_DEFAULT_EMAIL: student@hu.nl
       PGADMIN_DEFAULT_PASSWORD: 1q2w3e!
